@@ -1,0 +1,20 @@
+<body>
+  <div class="center">
+    <h3>Welcome to E-Learn</h3>
+    <form [formGroup]="signUpForm" (ngSubmit)="userSignUp()">
+      <div class="txt_field">
+        <input type="text" formControlName="username" required />
+        <span> </span>
+        <label>Username</label>
+      </div>
+
+      <div class="txt_field">
+        <input type="password" formControlName="password" required />
+        <span> </span>
+        <label> Password </label>
+      </div>
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+</body>
+<router-outlet></router-outlet>

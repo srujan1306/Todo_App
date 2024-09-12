@@ -1,0 +1,25 @@
+<body>
+  <div class="center">
+    <h3>Welcome to E-Learn</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="userLogin()">
+      <div class="txt_field">
+        <input type="text" formControlName="username" required />
+        <span> </span>
+        <label>Username</label>
+      </div>
+
+      <div class="txt_field">
+        <input type="password" formControlName="password" required />
+        <span> </span>
+        <label> Password </label>
+      </div>
+
+      <div class="forgot">Forgot Password?</div>
+      <button type="submit">Login</button>
+      <div class="users_signup">
+        Don't have an account? <a routerLink="/signup">SignUp</a>
+      </div>
+    </form>
+  </div>
+</body>
+<router-outlet></router-outlet>
