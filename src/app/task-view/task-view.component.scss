@@ -1,3 +1,4 @@
+@import "../../main-styles.scss";
 .whole_container {
   display: flex;
   justify-content: center;
@@ -15,6 +16,7 @@
 }
 .tasks_list {
   display: flex;
+  flex-direction: column;
   width: 250px;
   background: white;
   padding: 42px;
@@ -23,6 +25,7 @@
 }
 .todo_list {
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
   width: 200px;
   padding: 42px;
@@ -31,6 +34,52 @@
 }
 .title {
   font-family: "Lato";
-  font-size: 28px;
+  font-size: 24px;
   text-transform: uppercase;
+}
+.list_menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  flex-grow: 1;
+  .list_menu_item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    width: 100%;
+    color: #5f5f5f;
+    margin-bottom: 5px;
+
+    &:hover {
+      background: $light;
+    }
+    &.is-active {
+      background-color: #cff8ef;
+      color: $dark-green;
+    }
+  }
+}
+.task {
+  background: white;
+  margin-top: 10px;
+  padding: 15px 20px;
+  border-radius: 8px;
+
+  &:not(.complete) {
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:hover {
+      box-shadow: 0 0 4px 5px #e1e1e1;
+    }
+  }
+  &.complete {
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
 }
