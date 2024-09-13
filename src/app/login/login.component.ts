@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { LoginService } from '../login.service';
-
+import { TasksetService } from '../taskset.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -14,7 +14,9 @@ export class LoginComponent {
   loginForm!: FormGroup;
   tokenGenerated = false;
   constructor(
-    public loginService: LoginService,
+    private loginService: LoginService,
+    private tasksetService: TasksetService,
+
     private router: Router,
     private fb: FormBuilder
   ) {
@@ -29,8 +31,12 @@ export class LoginComponent {
     this.loginService.login(this.loginForm.value).then((data) => {
       if (data.token) {
         localStorage.setItem('token', data.token);
+        localStorage.setItem('user_Id', data.user_id);
+        localStorage.setItem('user_name', data.username);
         this.tokenGenerated = true;
         if (this.tokenGenerated) {
+          this.tasksetService.getUserTasksets();
+
           this.router.navigate(['/tasksets']).then(() => {
             window.location.reload();
           });
